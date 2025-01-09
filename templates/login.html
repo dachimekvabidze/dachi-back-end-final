@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>დაჩის ფინალური საიტი | რეგისტრაცია</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <a href="https://www.tbceducation.ge/" target="_blank"><img src="../static/tbc-logo.png" class="tbc_logo" alt="tbc logo"></a>
+        <nav>
+            <ul>
+                <li><a class="h1a" href="{{ url_for('index') }}">მთავარი</a></li>
+                <li><a class="h1a" href="{{ url_for('about') }}">ჩვენს შესახებ</a></li>
+                <li><a class="h1a" href="#">სტატიები</a></li>
+                <li><a class="h1a" href="{{ url_for('contact') }}">კონტაქტი</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a class="h1a" href="{{ url_for('add_content') }}">სტატიის დამატება</a></li>
+                {% else %}
+                    <li><a class="h1a" href="{{ url_for('login') }}">შესვლა</a></li>
+                {% endif %}
+            </ul>
+            <div class="line"></div>
+            <ul>
+                <li><a class="fb" href="https://www.facebook.com/dachi.mekvabidze" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a class="insta" href="https://www.instagram.com/dmekvabidze/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a class="yt" href="https://www.youtube.com/@itzdogelover" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="login_image">
+            <h1 class="contact_image_h1">შესვლა</h1>
+        </div>
+    </section>
+    <section style="padding: 70px; margin-bottom: 70px;">
+        <div class="login_box">
+            <form action="{{ url_for('login') }}" method="POST">
+                {{ form.hidden_tag() }}
+    
+                <div class="form-group">
+                    <label for="email" class="about_h1">Email</label>
+                    {{ form.email(class="form-control") }}
+                </div>
+    
+                <div class="form-group">
+                    <label for="password" class="about_h1">Password</label>
+                    {{ form.password(class="form-control") }}
+                </div>
+    
+                <button type="submit" class="btn btn-primary" class="about_h1">Login</button>
+            </form>
+    
+            <p class="about_h1">Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer_contact">
+            <h1 class="footer_h1">დაუკავშირდი გამომცემელს</h1>
+            <p class="footer_p">itzdogelover@gmail.com</p>
+            <p class="footer_p">+995 555 44 88 18</p>
+        </div>
+        <div class="footer_explore">
+            <h1 class="footer_h1">ნავიგაცია</h1>
+            <a href="#" class="footer_p">ჩვენს შესახებ</a>
+            <br> <br>
+            <a href="#" class="footer_p">პარტნიორები</a>
+            <br> <br>
+            <a href="#" class="footer_p">დასაქმება</a>
+            <br> <br>
+            <a href="#" class="footer_p">რეკლამა</a>
+            <br> <br>
+            <a href="#" class="footer_p">გაწევრიანება</a>
+        </div>
+        <div class="footer_headquarters">
+            <h1 class="footer_h1">სათაო ოფისი</h1>
+            <p class="footer_p">თბილისი, კ.მარჯანიშვილის ქუჩა №7</p>
+        </div>
+        <div class="connections">
+            <h1 class="footer_h1">დაგვიკავშირდით</h1>
+            <div style="display: flex; justify-content: space-between;">
+                <a href="https://www.facebook.com/dachi.mekvabidze"><i class="fa-brands fa-facebook" style="color: #ffffff;"></i></a>
+                <a href="https://www.instagram.com/dmekvabidze/"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a>
+                <a href="https://www.youtube.com/@itzdogelover"><i class="fa-brands fa-youtube" style="color: #ffffff;"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
