@@ -1,0 +1,11 @@
+Flask
+Flask-SQLAlchemy
+Flask-Bcrypt
+Flask-Login
+Flask-Migrate
+Flask-WTF
+Pillow
+python-dotenv
+gunicorn
+werkzeug
+email_validator
