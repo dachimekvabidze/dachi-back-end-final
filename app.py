@@ -34,6 +34,14 @@ def math():
     math_contents = Content.query.filter_by(category='Math').all()
     return render_template('math.html', math_contents=math_contents)
 
+@app.route("/create_admin")
+def create_admin():
+    hashed_password = bcrypt.generate_password_hash('adminpassword').decode('utf-8')
+    admin = User(username='admin', email='admin@example.com', password=hashed_password, is_admin=True)
+    db.session.add(admin)
+    db.session.commit()
+    return "Admin user created!"
+
 @app.route("/physics")
 def physics():
     physics_contents = Content.query.filter_by(category='Physics').all()
@@ -116,6 +124,27 @@ def save_picture(form_picture):
     i.save(picture_path)
     
     return picture_fn
+
+@app.route("/admin")
+@login_required
+def admin():
+    if not current_user.is_admin:
+        flash('You do not have permission to access this page.', 'danger')
+        return redirect(url_for('index'))
+    contents = Content.query.all()
+    return render_template('admin.html', contents=contents)
+
+@app.route("/delete_content/<int:content_id>")
+@login_required
+def delete_content(content_id):
+    if not current_user.is_admin:
+        flash('You do not have permission to perform this action.', 'danger')
+        return redirect(url_for('index'))
+    content = Content.query.get_or_404(content_id)
+    db.session.delete(content)
+    db.session.commit()
+    flash('Content has been deleted!', 'success')
+    return redirect(url_for('admin'))
 
 if __name__ == "__main__":
     with app.app_context():

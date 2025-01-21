@@ -649,3 +649,67 @@ footer {
     margin-top: 15px;
     text-align: center;
 }
+
+/* admin */
+
+.admin_image {
+    height: 600px;
+    width: 100%;
+    background-image: url(../static/admin.jpg);
+    background-size: cover;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+}
+
+.admin_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #a9afb4;
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; /* Center the box horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin_box h2 {
+    margin-bottom: 20px;
+}
+
+.admin_content_item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin_content_item h3 {
+    margin-top: 0;
+}
+
+.admin_content_item p {
+    margin: 10px 0;
+}
+
+.admin_content_item .btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.admin_content_item .btn:hover {
+    background-color: #c82333;
+}
